@@ -15,10 +15,11 @@ var (
 	client = &http.Client{
 		Timeout: 30 * time.Second,
 	}
+	apiURL = "https://api.genelpara.com/embed/doviz.json"
 )
 
 func GetExchange() (*model.Exchange, error) {
-	resp, err := client.Get("https://api.genelpara.com/embed/doviz.json")
+	resp, err := client.Get(apiURL)
 	if err != nil {
 		log.Println(err)
 	}

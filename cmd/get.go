@@ -86,7 +86,8 @@ func getExchange() *model.Exchange {
 func printCurrency(currencyName string, currencyUnit string, buying string, sales string) {
 	current_time := time.Now()
 
-	fmt.Printf("[%s] [%s] : Buying: %s %s, Sales: %s₺ %s", currencyName, current_time.Format("2006-01-02 15:04:05"), buying, currencyUnit, sales, currencyUnit)
+	fmt.Printf("[%s] [%s] : Buying: %s %s, Sales: %s₺ %s",
+		currencyName, current_time.Format("2006-01-02 15:04:05"), buying, currencyUnit, sales, currencyUnit)
 
 	fmt.Println()
 }
