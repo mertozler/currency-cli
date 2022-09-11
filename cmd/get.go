@@ -49,30 +49,30 @@ Note: If the API is not available, the exchange information will not be accessib
 
 func getUsd() {
 	exchange := getExchange()
-	printCurrency("USD", exchange.Usd.Satis, exchange.Usd.Alis)
+	printCurrency("USD", "₺", exchange.Usd.Satis, exchange.Usd.Alis)
 }
 
 func getEuro() {
 	exchange := getExchange()
-	printCurrency("EURO", exchange.Eur.Satis, exchange.Eur.Alis)
+	printCurrency("EURO", "₺", exchange.Eur.Satis, exchange.Eur.Alis)
 }
 func getBtc() {
 	exchange := getExchange()
-	printCurrency("BTC", exchange.Btc.Satis, exchange.Btc.Alis)
+	printCurrency("BTC", "$", exchange.Btc.Satis, exchange.Btc.Alis)
 }
 
 func getSterlin() {
 	exchange := getExchange()
-	printCurrency("STERLIN", exchange.Gbp.Satis, exchange.Gbp.Alis)
+	printCurrency("STERLIN", "₺", exchange.Gbp.Satis, exchange.Gbp.Alis)
 }
 
 func getEth() {
 	exchange := getExchange()
-	printCurrency("ETH", exchange.Eth.Satis, exchange.Eth.Alis)
+	printCurrency("ETH", "$", exchange.Eth.Satis, exchange.Eth.Alis)
 }
 func getGold() {
 	exchange := getExchange()
-	printCurrency("GOLD", exchange.Gold.Satis, exchange.Gold.Alis)
+	printCurrency("GOLD", "₺", exchange.Gold.Satis, exchange.Gold.Alis)
 }
 
 func getExchange() *model.Exchange {
@@ -83,13 +83,11 @@ func getExchange() *model.Exchange {
 	return exchange
 }
 
-func printCurrency(currencyName string, satis string, alis string) {
+func printCurrency(currencyName string, currencyUnit string, buying string, sales string) {
 	current_time := time.Now()
-	if currencyName == "ETH" || currencyName == "BTC" {
-		fmt.Printf("[%s] [%s] : Buying: %s$, Sales: %s$", currencyName, current_time.Format("2006-01-02 15:04:05"), satis, alis)
-	} else {
-		fmt.Printf("[%s] [%s] : Buying: %s₺, Sales: %s₺", currencyName, current_time.Format("2006-01-02 15:04:05"), satis, alis)
-	}
+
+	fmt.Printf("[%s] [%s] : Buying: %s %s, Sales: %s₺ %s", currencyName, current_time.Format("2006-01-02 15:04:05"), buying, currencyUnit, sales, currencyUnit)
+
 	fmt.Println()
 }
 
