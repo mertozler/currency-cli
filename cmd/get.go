@@ -5,8 +5,8 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/mertozler/currency-cli/exchange"
 	"github.com/mertozler/currency-cli/model"
-	"github.com/mertozler/currency-cli/parser"
 	"github.com/spf13/cobra"
 	"time"
 )
@@ -76,7 +76,7 @@ func getGold() {
 }
 
 func getExchange() *model.Exchange {
-	exchange, err := parser.GetExchange()
+	exchange, err := exchange.GetExchange()
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -85,7 +85,11 @@ func getExchange() *model.Exchange {
 
 func printCurrency(currencyName string, satis string, alis string) {
 	current_time := time.Now()
-	fmt.Printf("[%s] [%s] : Buying: %s₺, Sales: %s₺", currencyName, current_time.Format("2006-01-02 15:04:05"), satis, alis)
+	if currencyName == "ETH" || currencyName == "BTC" {
+		fmt.Printf("[%s] [%s] : Buying: %s$, Sales: %s$", currencyName, current_time.Format("2006-01-02 15:04:05"), satis, alis)
+	} else {
+		fmt.Printf("[%s] [%s] : Buying: %s₺, Sales: %s₺", currencyName, current_time.Format("2006-01-02 15:04:05"), satis, alis)
+	}
 	fmt.Println()
 }
 
