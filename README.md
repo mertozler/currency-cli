@@ -22,7 +22,7 @@ currency-cli is a cli tool that allows you to fetch the exchange rates you want.
 
 ## Installation
 ```bash
-go install https://github.com/mertozler/currency-cli@latest
+go install github.com/mertozler/currency-cli@latest
 ```
 
 ## Contributing
